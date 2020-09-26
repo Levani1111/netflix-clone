@@ -1,5 +1,7 @@
 # netflix-clone
 
+This is my netflix clone using the netflix API. It allows you to pick netflix movies and shows by genre. It allows you to see trailer of movies
+
 ## Tech
 
 - REACTJS
@@ -15,5 +17,6 @@
 
 https://netflix-clone-ef75a.web.app/
 
-Author
+###### Author
+
 Levani Papashvili 2020
