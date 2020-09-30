@@ -19,4 +19,4 @@ https://netflix-clone-ef75a.web.app/
 
 ###### Author
 
-Levani Papashvili 2020
+Levani Papashvili @2020
