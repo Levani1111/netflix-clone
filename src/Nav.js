@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Nav.css";
 
-function Nav() {
+function Nav({ activeSection, sections, onSectionChange }) {
   const [show, handleShow] = useState(false);
 
   useEffect(() => {
@@ -17,21 +17,34 @@ function Nav() {
 
   return (
     <div className={`nav ${show && "nav__black"}`}>
-      <img
-        className="nav__logo"
-        src="http://pngimg.com/uploads/netflix/netflix_PNG32.png"
-        alt="Netflix Logo"
-      />
-      <img
-        className="nav__avatar"
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ6x9ruPboB7yXVyZ70HQ8HrRLEDipZdRPgAQ&usqp=CAU
-"
-        alt="Netflix Logo"
-      />
+      <div className="nav__left">
+        <div className="nav__brand" aria-label="Netflix Clone">
+          <span className="nav__brand-main">Netflix</span>
+          <span className="nav__brand-tag">Clone</span>
+        </div>
+        <nav className="nav__links" aria-label="Main navigation">
+          {Object.entries(sections).map(([sectionKey, section]) => (
+            <button
+              key={sectionKey}
+              className={`nav__link ${
+                activeSection === sectionKey ? "nav__link--active" : ""
+              }`}
+              type="button"
+              onClick={() => onSectionChange(sectionKey)}
+            >
+              {section.label}
+            </button>
+          ))}
+        </nav>
+      </div>
+      <div className="nav__right">
+        <span className="nav__disclaimer">Portfolio clone</span>
+        <div className="nav__avatar" aria-label="Profile">
+          N
+        </div>
+      </div>
     </div>
   );
 }
-
-// https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ6x9ruPboB7yXVyZ70HQ8HrRLEDipZdRPgAQ&usqp=CAU
 
 export default Nav;

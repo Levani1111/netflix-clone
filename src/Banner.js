@@ -8,7 +8,7 @@ function Banner() {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.fetchNetflixOriginals);
+      const request = await axios.get(requests.fetchStreamingOriginals);
       setMovie(
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)
@@ -19,8 +19,6 @@ function Banner() {
     fetchData();
   }, []);
 
-  console.log(movie);
-
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
@@ -30,25 +28,26 @@ function Banner() {
       className="banner"
       style={{
         backgroundSize: "cover",
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}"
-
-        )`,
-        backgroundPosition: "canter center",
+        backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.35) 44%, rgba(0, 0, 0, 0.05) 100%), url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        backgroundPosition: "center center",
       }}
     >
       <div className="banner__contents">
+        <div className="banner__label">Netflix Original</div>
         <h1 className="banner__title">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
 
         <div className="banner_buttons">
-          <button className="banner__button">Play </button>
-          <button className="banner__button"> My List</button>
+          <button className="banner__button banner__button--play">Play</button>
+          <button className="banner__button banner__button--more">
+            More Info
+          </button>
         </div>
 
-        <h1 className="banner__description">
+        <p className="banner__description">
           {truncate(movie?.overview, 150)}
-        </h1>
+        </p>
         {/* {movie?.overview} */}
       </div>
       <div className="banner--fadeBottom" />

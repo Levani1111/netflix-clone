@@ -2,6 +2,43 @@
   margin: 0%;
 }
 
+body {
+  background-color: #111;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .app {
   background-color: #111;
+  min-height: 100vh;
+}
+
+.app__rows {
+  padding-bottom: 3rem;
+}
+
+.app__empty-list {
+  color: #ffffff;
+  margin: -20px 4% 0;
+  min-height: 260px;
+  position: relative;
+  z-index: 2;
+}
+
+.app__empty-list h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.8rem;
+}
+
+.app__empty-list p {
+  color: #b3b3b3;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 520px;
+}
+
+@media (max-width: 640px) {
+  .app__empty-list {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 }
