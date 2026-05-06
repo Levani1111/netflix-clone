@@ -66,34 +66,36 @@ The repository includes a GitHub Actions workflow at:
 .github/workflows/firebase-hosting.yml
 ```
 
-Every push to the `master` branch builds the React app and deploys the `build` folder to Firebase Hosting.
+Every push to the `master` branch builds the React app and deploys the `build` folder to the live Firebase Hosting site.
 
-Before GitHub Actions can deploy, add a Firebase token to the GitHub repository secrets:
+Before GitHub Actions can deploy, add a Firebase service account to the GitHub repository secrets:
 
-1. Generate a Firebase CI token locally:
+1. Open Firebase project settings:
 
-```bash
-firebase login:ci
+```text
+https://console.firebase.google.com/project/netflix-clone-ef75a/settings/serviceaccounts/adminsdk
 ```
 
-2. Copy the generated token.
+2. Click `Generate new private key`.
 
-3. Open the GitHub repository:
+3. Download the JSON file.
+
+4. Open the GitHub repository:
 
 ```text
 https://github.com/Levani1111/netflix-clone
 ```
 
-4. Go to `Settings` > `Secrets and variables` > `Actions`.
+5. Go to `Settings` > `Secrets and variables` > `Actions`.
 
-5. Add a new repository secret:
+6. Add a new repository secret:
 
 ```text
-Name: FIREBASE_TOKEN
-Value: paste the token from firebase login:ci
+Name: FIREBASE_SERVICE_ACCOUNT_NETFLIX_CLONE_EF75A
+Value: paste the full JSON content from the private key file
 ```
 
-6. Push to `master`:
+7. Push to `master`:
 
 ```bash
 git push origin master
@@ -104,7 +106,7 @@ GitHub Actions will then run:
 ```bash
 npm ci
 npm run build
-npx firebase-tools deploy --only hosting --project netflix-clone-ef75a
+FirebaseExtended/action-hosting-deploy@v0
 ```
 
 #### Deployed:
